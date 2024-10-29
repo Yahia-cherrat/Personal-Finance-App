@@ -64,4 +64,32 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Define relationships
+     */
+
+    // User can have multiple categories for income and expenses
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
+
+    // User has multiple transactions
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    // User has multiple budgets for financial planning
+    public function budgets()
+    {
+        return $this->hasMany(Budget::class);
+    }
+
+    public function income()
+    {
+        return $this->hasMany(Income::class);
+    }
+
 }
